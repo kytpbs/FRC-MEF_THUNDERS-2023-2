@@ -22,6 +22,7 @@ public class Constants {
     }
     static class ElevatorConstants {
         public static final DigitalInput toplimitSwitch = new DigitalInput(0);
+        public static final DigitalInput bottomlimitSwitch = new DigitalInput(1);
         public static final Spark Elevator =new Spark(5);
     }
     static class JoystickConstants {

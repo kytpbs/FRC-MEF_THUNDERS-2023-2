@@ -2,6 +2,7 @@ package frc.robot;
 import static frc.robot.Constants.DriveConstants.driveTrain;
 import static frc.robot.Constants.ElevatorConstants.Elevator;
 import static frc.robot.Constants.ElevatorConstants.toplimitSwitch;
+import static frc.robot.Constants.ElevatorConstants.bottomlimitSwitch;
 import static frc.robot.Constants.JoystickConstants.stick;
 
 public class Teleop {
@@ -19,12 +20,17 @@ public class Teleop {
             Elevator.set(0);
           }
           if (stick.getPOV() == 180) {
-            Elevator.set(1);
+            if (bottomlimitSwitch.get()){
+              Elevator.set(1);
+            }
           }
           else {
             Elevator.set(0);
           }
-      
+          
+        if (bottomlimitSwitch.get()) {
+            Elevator.set(0);
+        }
           if (!toplimitSwitch.get()) {
             Elevator.set(0);
           }
@@ -41,7 +47,9 @@ public class Teleop {
       
           if(stick.getRawButtonPressed(2))
           {
-            Elevator.set(1);     
+            if (bottomlimitSwitch.get()){
+              Elevator.set(1);
+            }
           }
       
           if(stick.getRawButtonReleased(2))
