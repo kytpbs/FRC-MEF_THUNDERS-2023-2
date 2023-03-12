@@ -11,7 +11,8 @@
       "/FMSInfo": "FMSInfo",
       "/LiveWindow/Ungrouped/DifferentialDrive[1]": "DifferentialDrive",
       "/LiveWindow/Ungrouped/DigitalInput[0]": "Digital Input",
-      "/LiveWindow/Ungrouped/Spark[5]": "Motor Controller"
+      "/LiveWindow/Ungrouped/Spark[5]": "Motor Controller",
+      "/SmartDashboard/Auto choices": "String Chooser"
     }
   }
 }
