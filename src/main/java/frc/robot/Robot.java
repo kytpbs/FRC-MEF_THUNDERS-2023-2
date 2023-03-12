@@ -4,8 +4,18 @@
 
 package frc.robot;
 
+import static frc.robot.Constants.AutoConstants.kCameraAuto;
+import static frc.robot.Constants.AutoConstants.kGyroAuto;
+import static frc.robot.Constants.AutoConstants.kStabilize;
+import static frc.robot.Constants.AutoConstants.kTimedAuto;
+import static frc.robot.Constants.DriveConstants.driveTrain;
+
+
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
+
 
 
 /**
@@ -17,20 +27,47 @@ import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
 
 
 public class Robot extends TimedRobot {
+  private final SendableChooser<String> m_chooser = new SendableChooser<>();
+  private String m_autoSelected;
+  
 
   Teleop teleop = new Teleop();
+  Autonomous automonus = new Autonomous();
   @Override
-  public void robotInit() {}
+  public void robotInit() {
+    m_chooser.setDefaultOption("Timer Auto", kTimedAuto);
+    m_chooser.addOption("Gyro Auto", kGyroAuto);
+    m_chooser.addOption("Camera Auto", kCameraAuto);
+    m_chooser.addOption("Stabilize Auto", kStabilize);
+    SmartDashboard.putData("Auto choices", m_chooser);
+  }
 
   @Override
   public void robotPeriodic() {}
 
   @Override
-  public void autonomousInit() {}
+  public void autonomousInit() {
+    m_autoSelected = m_chooser.getSelected();
+    System.out.println("Auto selected: " + m_autoSelected);
+  }
 
   @Override
   public void autonomousPeriodic() {
- 
+    switch (m_autoSelected) {
+      case kGyroAuto:
+        Autonomous.Gyro();
+        break;
+      case kCameraAuto:
+        Autonomous.Camera();
+        break;
+      case kStabilize:
+        Autonomous.Stabilize();
+        break;
+      case kTimedAuto:
+      default:
+        Autonomous.Timed();
+        break;
+    }
   }
 
   @Override
@@ -44,7 +81,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void disabledInit() {}
+  public void disabledInit() {
+    driveTrain.stopMotor();
+  }
 
   @Override
   public void disabledPeriodic() {}

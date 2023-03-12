@@ -31,4 +31,10 @@ public class Constants {
     static class TimerConstants {
         public static final Timer timer = new Timer();
     }
+    static class AutoConstants {
+        public static final String kTimedAuto = "Timer Auto";
+        public static final String kGyroAuto = "Gyro Auto";
+        public static final String kCameraAuto = "Camera Auto";
+        public static final String kStabilize = "Stabilize Auto";
+    }
 }
