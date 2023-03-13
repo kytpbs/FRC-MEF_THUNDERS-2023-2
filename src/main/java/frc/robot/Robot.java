@@ -49,26 +49,11 @@ public class Robot extends TimedRobot {
   public void autonomousInit() {
     m_autoSelected = m_chooser.getSelected();
     System.out.println("Auto selected: " + m_autoSelected);
+    Autonomous.init(m_autoSelected);
   }
 
   @Override
-  public void autonomousPeriodic() {
-    switch (m_autoSelected) {
-      case kGyroAuto:
-        Autonomous.Gyro();
-        break;
-      case kCameraAuto:
-        Autonomous.Camera();
-        break;
-      case kStabilize:
-        Autonomous.Stabilize();
-        break;
-      case kTimedAuto:
-      default:
-        Autonomous.Timed();
-        break;
-    }
-  }
+  public void autonomousPeriodic() {}
 
   @Override
   public void teleopInit() {

@@ -26,4 +26,24 @@ public class Autonomous {
     public static void Gyro() {
 
     }
+
+    public static void init(String autoSelected) {
+        switch (autoSelected) {
+            case "Timed":
+                Timed();
+                break;
+            case "Camera":
+                Camera();
+                break;
+            case "Stabilize":
+                Stabilize();
+                break;
+            case "Gyro":
+                Gyro();
+                break;
+            default:
+                Timed();
+                break;
+        }
+    }
 }
