@@ -1,19 +1,21 @@
 package frc.robot;
 import edu.wpi.first.wpilibj.motorcontrol.VictorSP;
+import com.ctre.phoenix.motorcontrol.can.WPI_VictorSPX;
 import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
+import edu.wpi.first.wpilibj.AnalogPotentiometer;
 
 public class Constants {
     static class DriveConstants {
-        public static final VictorSP rightMotor1 = new VictorSP(0);
-        public static final VictorSP rightMotor2 = new VictorSP(1);
+        public static final WPI_VictorSPX rightMotor1 = new WPI_VictorSPX(1);
+        public static final WPI_VictorSPX rightMotor2 = new WPI_VictorSPX(2);
         
-        public static final VictorSP leftMotor1 = new VictorSP(2);
-        public static final VictorSP leftMotor2 = new VictorSP(3);
+        public static final WPI_VictorSPX leftMotor1 = new WPI_VictorSPX(3);
+        public static final WPI_VictorSPX leftMotor2 = new WPI_VictorSPX(4);
 
         public static final MotorControllerGroup rightMotorsGroup = new MotorControllerGroup(rightMotor1, rightMotor2);
         public static final MotorControllerGroup leftMotorsGroup = new MotorControllerGroup(leftMotor1, leftMotor2);
@@ -23,8 +25,8 @@ public class Constants {
     static class ElevatorConstants {
         public static final DigitalInput toplimitSwitch = new DigitalInput(0);
         public static final DigitalInput bottomlimitSwitch = new DigitalInput(1);
-        public static final Spark Elevator =new Spark(5);
-        public static final Spark Virtical_Elevator =new Spark(7);
+        public static final Spark Elevator =new Spark(2);
+        public static final Spark Virtical_Elevator =new Spark(3);
     }
     static class JoystickConstants {
         public static final Joystick stick = new Joystick(0);

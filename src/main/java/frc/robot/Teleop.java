@@ -6,9 +6,10 @@ import static frc.robot.Constants.ElevatorConstants.toplimitSwitch;
 import static frc.robot.Constants.ElevatorConstants.bottomlimitSwitch;
 import static frc.robot.Constants.JoystickConstants.stick;
 
+
 public class Teleop {
     public static void drive() {
-        driveTrain.arcadeDrive(stick.getZ() * (0.7) , stick.getY(), true);
+        driveTrain.arcadeDrive(stick.getZ() * (0.8) , stick.getY(), true);
     }
 
     public static void elevator() {
