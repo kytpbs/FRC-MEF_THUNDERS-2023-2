@@ -27,6 +27,7 @@ public class Constants {
         public static final DigitalInput bottomlimitSwitch = new DigitalInput(1);
         public static final Spark Elevator =new Spark(2);
         public static final Spark Virtical_Elevator =new Spark(3);
+        public static final AnalogPotentiometer Elevator_Hand = new AnalogPotentiometer(0, 180, 30);
     }
     static class JoystickConstants {
         public static final Joystick stick = new Joystick(0);

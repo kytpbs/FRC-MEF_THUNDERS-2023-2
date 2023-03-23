@@ -9,6 +9,7 @@ import static frc.robot.Constants.AutoConstants.kGyroAuto;
 import static frc.robot.Constants.AutoConstants.kStabilize;
 import static frc.robot.Constants.AutoConstants.kTimedAuto;
 import static frc.robot.Constants.DriveConstants.driveTrain;
+import static frc.robot.Constants.ElevatorConstants.Elevator_Hand;
 
 
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -43,7 +44,9 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void robotPeriodic() {}
+  public void robotPeriodic() {
+    SmartDashboard.putNumber("Potansiyometre", Elevator_Hand.get());
+  }
 
   @Override
   public void autonomousInit() {
