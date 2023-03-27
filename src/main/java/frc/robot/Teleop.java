@@ -45,27 +45,35 @@ public class Teleop {
           Elevator.set(0);
         }
       }
+      
       if (stick.getRawButtonPressed(1)) {
         Vertical_Elevator.set(0.6);
       }
+      
       if (stick.getRawButtonReleased(1)) {
         Vertical_Elevator.set(0);
       }
+      
       if (stick.getRawButtonPressed(2)) {
         Vertical_Elevator.set(-0.6);
       }
+      
       if (stick.getRawButtonReleased(2)) {
         Vertical_Elevator.set(0);
       }
+      
       if (stick.getRawButtonPressed(5)) {
         Redline.set(0.6);
       }
+      
       if (stick.getRawButtonReleased(5)) {
         Redline.set(0);
       }
+      
       if (stick.getRawButtonPressed(6)) {
         Redline.set(-0.6);
       }
+      
       if (stick.getRawButtonReleased(6)) {
         Redline.set(0);
       }
