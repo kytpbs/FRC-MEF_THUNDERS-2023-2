@@ -12,7 +12,6 @@ import static frc.robot.Constants.ElevatorConstants.Neo;
 import static frc.robot.Constants.JoystickConstants.stick;
 
 public class Teleop {
-  private static double Neo_speed = 0;
   private static boolean runpid = true;
   private static double pid_target = 0;
   static PIDController pid = new PIDController(0.3, 0, 0);

@@ -15,7 +15,6 @@ import static frc.robot.Constants.ElevatorConstants.Elevator;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.cameraserver.CameraServer;
-import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -38,7 +37,7 @@ public class Robot extends TimedRobot {
     Elevator.setInverted(true);
     Vertical_Elevator.setInverted(true);
     Neo.getEncoder().setPosition(0);
-    UsbCamera camera =  CameraServer.startAutomaticCapture();
+    CameraServer.startAutomaticCapture();
     Dashboard.Put_Dashboard_Init();
     m_chooser.setDefaultOption("Timer Auto", kTimedAuto);
     m_chooser.addOption("Gyro Auto", kGyroAuto);
