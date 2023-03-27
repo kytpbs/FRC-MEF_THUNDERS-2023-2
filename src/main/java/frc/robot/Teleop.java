@@ -123,7 +123,7 @@ public class Teleop {
 
     public static void Neo() {
       if (stick.getRawButtonPressed(3)) {
-        double Neo_speed = 0.5;
+        Neo.set(0.5);
         runpid = false;
       }
       if (stick.getRawButtonReleased(3)) {
@@ -132,7 +132,7 @@ public class Teleop {
         runpid = true;
       }
       if (stick.getRawButtonPressed(4)) {
-        double Neo_speed = -0.3;
+        Neo.set(-0.3);
         runpid = false;
       }
       if (stick.getRawButtonReleased(4)) {
@@ -142,8 +142,8 @@ public class Teleop {
       }
       if (runpid) {
         double Neo_speed = pid.calculate(Neo.getEncoder().getPosition(), pid_target);
+        Neo.set(Neo_speed);
       }
-      Neo.set(Neo_speed);
 
     }
 
