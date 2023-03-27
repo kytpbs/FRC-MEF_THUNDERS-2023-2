@@ -60,7 +60,10 @@ public class Robot extends TimedRobot {
   }
 
   @Override
-  public void autonomousPeriodic() {}
+  public void autonomousPeriodic() {
+    m_autoSelected = m_chooser.getSelected();
+    Autonomous.periodic(m_autoSelected);
+  }
 
   @Override
   public void teleopInit() {

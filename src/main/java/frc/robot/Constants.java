@@ -54,9 +54,9 @@ public class Constants {
     }
     static class PhotonVisionConstants {
         public static PhotonCamera camera = new PhotonCamera("IMX219");
-        public static final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(1/4);
+        public static final double CAMERA_HEIGHT_METERS = Units.inchesToMeters(1/4); // change this to the height of the camera!!!
         public static final double TARGET_HEIGHT_METERS = Units.inchesToMeters(15.13);
-        public static final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(27);
+        public static final double CAMERA_PITCH_RADIANS = Units.degreesToRadians(0);  
         public static PIDController fowardController = new PIDController(0.1, 0, 0);
         public static PIDController turnController = new PIDController(0.1, 0, 0);
     }

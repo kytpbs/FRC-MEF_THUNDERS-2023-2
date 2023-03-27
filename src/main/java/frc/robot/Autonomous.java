@@ -1,9 +1,8 @@
 package frc.robot;
 
-import static frc.robot.Constants.TimerConstants.timer;
-
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import static frc.robot.Constants.TimerConstants.timer;
 import static frc.robot.Constants.ElevatorConstants.Redline;
 import static frc.robot.Constants.DriveConstants.driveTrain;
 
@@ -42,7 +41,19 @@ public class Autonomous {
                 Timed();
                 break;
             case "Camera":
-                Camera();
+                break;
+            case "Stabilize":
+                break;
+            case "Gyro":
+                break;
+            default:
+                Timed();
+                break;
+        }
+    }
+    public static void periodic(String autoSelected)  {
+        switch (autoSelected) {
+            case "Timed":
                 break;
             case "Stabilize":
                 Stabilize();
@@ -50,9 +61,12 @@ public class Autonomous {
             case "Gyro":
                 Gyro();
                 break;
+            case "Camera":
+                Camera();
+                break;
             default:
-                Timed();
                 break;
         }
+
     }
 }
