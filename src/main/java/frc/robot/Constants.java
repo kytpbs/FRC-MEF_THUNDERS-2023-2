@@ -7,7 +7,6 @@ import edu.wpi.first.wpilibj.motorcontrol.Spark;
 import edu.wpi.first.wpilibj.motorcontrol.MotorControllerGroup;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
 import edu.wpi.first.wpilibj.DigitalInput;
-import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
@@ -22,8 +21,6 @@ public class Constants {
         
         public static final WPI_VictorSPX leftMotor1 = new WPI_VictorSPX(3);
         public static final WPI_VictorSPX leftMotor2 = new WPI_VictorSPX(4);
-
-        public static final Encoder leftEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k2X);
 
         public static final MotorControllerGroup rightMotorsGroup = new MotorControllerGroup(rightMotor1, rightMotor2);
         public static final MotorControllerGroup leftMotorsGroup = new MotorControllerGroup(leftMotor1, leftMotor2);
