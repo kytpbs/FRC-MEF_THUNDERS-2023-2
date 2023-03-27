@@ -10,7 +10,7 @@ public class Autonomous {
     public static void Timed() {
         timer.start();
         while (timer.get() < 2) {
-            Redline.set(-0.7);
+            Redline.set(0.7);
         }
         timer.reset();
         while (timer.get() < 4) {
