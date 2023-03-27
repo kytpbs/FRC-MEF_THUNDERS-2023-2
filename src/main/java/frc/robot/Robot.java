@@ -9,11 +9,13 @@ import static frc.robot.Constants.AutoConstants.kGyroAuto;
 import static frc.robot.Constants.AutoConstants.kStabilize;
 import static frc.robot.Constants.AutoConstants.kTimedAuto;
 import static frc.robot.Constants.DriveConstants.driveTrain;
-import static frc.robot.Constants.ElevatorConstants.Elevator_Hand;
-
+import static frc.robot.Constants.ElevatorConstants.Neo;
+import static frc.robot.Constants.ElevatorConstants.Vertical_Elevator;
+import static frc.robot.Constants.ElevatorConstants.Elevator;
 
 import edu.wpi.first.wpilibj.TimedRobot;
-import edu.wpi.first.wpilibj.shuffleboard.Shuffleboard;
+import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.cscore.UsbCamera;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -31,11 +33,13 @@ public class Robot extends TimedRobot {
   private final SendableChooser<String> m_chooser = new SendableChooser<>();
   private String m_autoSelected;
   
-
-  Teleop teleop = new Teleop();
-  Autonomous automonus = new Autonomous();
   @Override
   public void robotInit() {
+    Elevator.setInverted(true);
+    Vertical_Elevator.setInverted(true);
+    Neo.getEncoder().setPosition(0);
+    UsbCamera camera =  CameraServer.startAutomaticCapture();
+    Dashboard.Put_Dashboard_Init();
     m_chooser.setDefaultOption("Timer Auto", kTimedAuto);
     m_chooser.addOption("Gyro Auto", kGyroAuto);
     m_chooser.addOption("Camera Auto", kCameraAuto);
@@ -45,7 +49,7 @@ public class Robot extends TimedRobot {
 
   @Override
   public void robotPeriodic() {
-    SmartDashboard.putNumber("Potansiyometre", Elevator_Hand.get());
+    Dashboard.Put_Dashboard_Periodic();
   }
 
   @Override
@@ -60,12 +64,14 @@ public class Robot extends TimedRobot {
 
   @Override
   public void teleopInit() {
+    Neo.getEncoder().setPosition(0);
   }
 
   @Override
   public void teleopPeriodic() {
     Teleop.drive();
     Teleop.elevator();
+    Teleop.Neo();
   }
 
   @Override
@@ -80,7 +86,10 @@ public class Robot extends TimedRobot {
   public void testInit() {}
 
   @Override
-  public void testPeriodic() {}
+  public void testPeriodic() {
+    Test.neopid();
+    Teleop.Neo();
+  }
 
   @Override
   public void simulationInit() {}
