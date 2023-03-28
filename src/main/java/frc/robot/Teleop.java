@@ -14,7 +14,8 @@ import static frc.robot.Constants.JoystickConstants.stick;
 public class Teleop {
   private static boolean runpid = true;
   private static double pid_target = 0;
-  static PIDController pid = new PIDController(0.3, 0, 0);
+  static PIDController pid = new PIDController(0.4, 0, 0);
+  static PIDController speed_pid = new PIDController(0.1, 0, 0);
     public static void drive() {
         driveTrain.arcadeDrive(stick.getZ(), stick.getY(), true);
     }
@@ -62,7 +63,7 @@ public class Teleop {
       }
       
       if (stick.getRawButtonPressed(5)) {
-        Redline.set(0.6);
+        Redline.set(0.8);
       }
       
       if (stick.getRawButtonReleased(5)) {
@@ -70,7 +71,7 @@ public class Teleop {
       }
       
       if (stick.getRawButtonPressed(6)) {
-        Redline.set(-0.6);
+        Redline.set(-0.8);
       }
       
       if (stick.getRawButtonReleased(6)) {
@@ -131,10 +132,19 @@ public class Teleop {
         runpid = true;
       }
       if (stick.getRawButtonPressed(4)) {
-        Neo.set(-0.3);
+        Neo.set(0);
         runpid = false;
       }
       if (stick.getRawButtonReleased(4)) {
+        Neo.set(0);
+        pid_target = Neo.getEncoder().getPosition();
+        runpid = true;
+      }
+      if (stick.getRawButtonPressed(7)) {
+        Neo.set(-0.3);
+        runpid = false;
+      }
+      if (stick.getRawButtonReleased(7)) {
         Neo.set(0);
         pid_target = Neo.getEncoder().getPosition();
         runpid = true;
