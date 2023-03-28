@@ -42,6 +42,7 @@ public class Constants {
     }
     static class TimerConstants {
         public static final Timer timer = new Timer();
+        public static final Timer sysTimer= new Timer();
     }
     static class AutoConstants {
         public static final String kTimedAuto = "Timer Auto";
