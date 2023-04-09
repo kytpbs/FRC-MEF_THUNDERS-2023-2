@@ -63,7 +63,7 @@ public class Teleop {
       }
       
       if (stick.getRawButtonPressed(5)) {
-        Redline.set(0.8);
+        Redline.set(1);
       }
       
       if (stick.getRawButtonReleased(5)) {
@@ -71,7 +71,7 @@ public class Teleop {
       }
       
       if (stick.getRawButtonPressed(6)) {
-        Redline.set(-0.8);
+        Redline.set(-1);
       }
       
       if (stick.getRawButtonReleased(6)) {
@@ -149,9 +149,13 @@ public class Teleop {
         pid_target = Neo.getEncoder().getPosition();
         runpid = true;
       }
-      if (runpid) {
+      if (stick.getRawButton(8)) {
         double Neo_speed = pid.calculate(Neo.getEncoder().getPosition(), pid_target);
         Neo.set(Neo_speed);
+      }
+      if (runpid) {
+        double Neo_speed = pid.calculate(Neo.getEncoder().getPosition(), pid_target);
+        //Neo.set(Neo_speed);
       }
 
     }
