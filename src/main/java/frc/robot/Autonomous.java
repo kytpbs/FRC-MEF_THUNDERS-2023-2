@@ -14,8 +14,8 @@ public class Autonomous {
         }
         Redline.set(0);
         timer.reset();
-        
-        while (timer.get() < 3) {
+       
+        while (timer.get() < 6) {
             driveTrain.arcadeDrive(0, 0.5);
         }
         timer.stop();
