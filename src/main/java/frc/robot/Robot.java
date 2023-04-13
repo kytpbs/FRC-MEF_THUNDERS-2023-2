@@ -15,6 +15,7 @@ import static frc.robot.Constants.ElevatorConstants.Elevator;
 
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.cameraserver.CameraServer;
+import edu.wpi.first.net.PortForwarder;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 
@@ -34,6 +35,7 @@ public class Robot extends TimedRobot {
   
   @Override
   public void robotInit() {
+    PortForwarder.add(5800, "photonvision.local", 5800);
     Elevator.setInverted(true);
     Vertical_Elevator.setInverted(true);
     Neo.getEncoder().setPosition(0);

@@ -10,11 +10,13 @@ public class Autonomous {
     public static void Timed() {
         timer.start();
         while (timer.get() < 2) {
-            Redline.set(0.7);
+            Redline.set(1);
         }
+        Redline.set(0);
         timer.reset();
-        while (timer.get() < 4) {
-            driveTrain.arcadeDrive(0, -0.5);
+       
+        while (timer.get() < 6) {
+            driveTrain.arcadeDrive(0, 0.5);
         }
         timer.stop();
         timer.reset();
