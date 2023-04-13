@@ -1,22 +1,32 @@
 package frc.robot;
 
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
 import static frc.robot.Constants.TimerConstants.timer;
+import static frc.robot.Constants.ElevatorConstants.Redline;
 import static frc.robot.Constants.DriveConstants.driveTrain;
 
 public class Autonomous {
     public static void Timed() {
         timer.start();
-        if (timer.get() < 5) {
-            driveTrain.arcadeDrive(0.5, 0);
+        while (timer.get() < 2) {
+            Redline.set(1);
         }
-        else {
-            driveTrain.arcadeDrive(0, 0);
-            timer.stop();
+        Redline.set(0);
+        timer.reset();
+       
+        while (timer.get() < 6) {
+            driveTrain.arcadeDrive(0, 0.5);
         }
+        timer.stop();
+        timer.reset();
+        driveTrain.stopMotor();
+    
     }
 
     public static void Camera() {
-
+        Integer Wanted_Area_Meters = (int)SmartDashboard.getNumber("Meter away from apriltag", 15);
+        PhotonVision.Auto(Wanted_Area_Meters, 0.8, 1);
     }
 
     public static void Stabilize() {
@@ -33,7 +43,19 @@ public class Autonomous {
                 Timed();
                 break;
             case "Camera":
-                Camera();
+                break;
+            case "Stabilize":
+                break;
+            case "Gyro":
+                break;
+            default:
+                Timed();
+                break;
+        }
+    }
+    public static void periodic(String autoSelected)  {
+        switch (autoSelected) {
+            case "Timed":
                 break;
             case "Stabilize":
                 Stabilize();
@@ -41,9 +63,12 @@ public class Autonomous {
             case "Gyro":
                 Gyro();
                 break;
+            case "Camera":
+                Camera();
+                break;
             default:
-                Timed();
                 break;
         }
+
     }
 }
